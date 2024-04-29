@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ player_name }} Game Log</title>
+</head>
+<body>
+    <h1>Game Log for {{ player_name }}</h1>
+    <ul>
+        {% for game in games.itertuples %}
+            <li>{{ game.MATCHUP }} - PTS: {{ game.PTS }} | AST: {{game.AST}} | REB: {{ game.REB }}</li>
+        {% empty %}
+            <li>No games found.</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
