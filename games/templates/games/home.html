@@ -1,15 +1,13 @@
-<!-- games/templates/games/home.html -->
-<!DOCTYPE html>
-<html>
-<head>
-    <title>NBA Player Stats</title>
-</head>
-<body>
-    <h1>Welcome to the NBA Stats Viewer</h1>
-    <form method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Get Stats</button>
-    </form>
-</body>
-</html>
+{% extends 'games/base.html' %}
+
+{% block title %}NBA Player Stats{% endblock %}
+
+{% block header %}Welcome to the NBA stats viewer{% endblock %}
+
+{% block content %}
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Enter</button>
+</form>
+{% endblock %}

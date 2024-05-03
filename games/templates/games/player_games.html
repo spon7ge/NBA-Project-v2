@@ -1,10 +1,8 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>{{ player_name }} Game Log</title>
-</head>
-<body>
-    <h1>Game Log for {{ player_name }}</h1>
+{% extends 'games/base.html' %}
+
+{%block title%}{{ player_name }} Game Log {% endblock %}
+{% block header %}Game Log for {{ player_name }} {% endblock %}
+{% block content %}
     <ul>
         {% for game in games.itertuples %}
             <li>{{ game.MATCHUP }} - PTS: {{ game.PTS }} | AST: {{game.AST}} | REB: {{ game.REB }}</li>
@@ -12,5 +10,4 @@
             <li>No games found.</li>
         {% endfor %}
     </ul>
-</body>
-</html>
+{% endblock %}
