@@ -25,6 +25,12 @@ SECRET_KEY = 'django-insecure-%3+3qx&iqnt_m!6v7g%woaj=f(a#rll*p0sl^l_1#axoqhd4ej
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+STATIC_URL = '/static/'
+
+STATICFILES_DIRS = [
+    BASE_DIR / "static",
+]
+
 ALLOWED_HOSTS = []
 
 
@@ -32,7 +38,6 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'games.apps.GamesConfig',
-    'blog.apps.BlogConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',

@@ -1,13 +1,23 @@
 {% extends 'games/base.html' %}
 
-{% block title %}NBA Player Stats{% endblock %}
+{% block title %}HoopsVista{% endblock %}
 
-{% block header %}Welcome to the NBA stats viewer{% endblock %}
+{% comment %} {% block header %}HoopsVista{% endblock %} {% endcomment %}
 
 {% block content %}
-<form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Enter</button>
-</form>
+<div class="container-fluid h-100">
+    <div class="row h-100 justify-content-center align-items-center">
+        <div class="col-md-6 text-center">  <!-- Ensure text-center is applied for all inner content -->
+            <h1 class="mb-4">HoopsVista</h1>  <!-- Display the site name or page title -->
+            <form method="post" class="form-inline justify-content-center">
+                {% csrf_token %}
+                <div class="form-group w-100">
+                    <input type="text" name="{{ form.player_name.name }}" value="{{ form.player_name.value|default:'' }}" class="form-control form-control-lg w-100" id="{{ form.player_name.id_for_label }}" placeholder="Search players">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
 {% endblock %}
+
+

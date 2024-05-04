@@ -38,4 +38,4 @@ def blog(request):
     context = {
         'posts': posts
     }
-    return render(request, 'blog/home.html', context)
+    return render(request, 'games/blog.html', context)
