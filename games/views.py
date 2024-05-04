@@ -3,11 +3,21 @@ from .nba_client import get_player_game_log
 from .forms import PlayerForm
 
 def player_games(request, player_name):
+    all_games = get_player_game_log(player_name)  # Assuming this returns a queryset or list
+    display_all = request.GET.get('all', 'no') == 'yes'  # Check if 'all' parameter is set to 'yes'
+
+    if display_all:
+        games = all_games
+    else:
+        games = all_games[:5]  # Adjust this according to how your data is ordered
+
     context = {
         'player_name': player_name,
-        'games': get_player_game_log(player_name)
+        'games': games,
+        'display_all': display_all  # Pass whether all games are being displayed
     }
     return render(request, 'games/player_games.html', context)
+
 
 def games(request):
     if request.method == 'POST':
@@ -18,6 +28,12 @@ def games(request):
     else:
         form = PlayerForm()
     return render(request, 'games/home.html', {'form':form})
+
+
+
+
+
+
 
 posts = [
     {

@@ -4,4 +4,41 @@ html, body {
   padding: 0; 
 }
 
+/* Add this CSS to adjust the table styles */
+.table {
+  width: 100%; /* Ensure the table takes up the full width of its container */
+  font-size: 12px; /* Adjust the font size of table content */
+}
 
+.table th,
+.table td {
+  padding: 0.5rem; /* Adjust the padding around table cells */
+}
+
+/* Optional: Adjust the width of specific columns */
+.table th:nth-child(1), .table td:nth-child(1) { width: 10%; }
+.table th:nth-child(2), .table td:nth-child(2) { width: 15%; }
+/* Add width rules for other columns as needed */
+
+/* Optional: Add word-wrap for long text in cells */
+.table td {
+  word-wrap: break-word;
+}
+
+/* Optional: Remove padding around table */
+.table-responsive {
+  padding: 0;
+}
+
+.table tbody tr,
+.table tbody td,
+.table tbody th {
+  padding: 0.1rem 0.5rem; /* Adjust the padding of table cells */
+  font-size: 0.8rem; /* Adjust the font size of table content */
+}
+
+.table tbody td:nth-child(1), .table tbody td:nth-child(2) {
+  white-space: nowrap; /* Prevent text from wrapping */
+  overflow: hidden; /* Hide overflow text */
+  text-overflow: ellipsis; /* Display ellipsis (...) for overflow text */
+}

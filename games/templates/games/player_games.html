@@ -1,13 +1,80 @@
 {% extends 'games/base.html' %}
 
-{%block title%}{{ player_name }} Game Log {% endblock %}
-{% block header %}Game Log for {{ player_name }} {% endblock %}
+{% block title %}{{ player_name }} game log{% endblock %}
+{% block header %}Game Log for {{ player_name }}{% endblock %}
+
 {% block content %}
-    <ul>
-        {% for game in games.itertuples %}
-            <li>{{ game.MATCHUP }} - PTS: {{ game.PTS }} | AST: {{game.AST}} | REB: {{ game.REB }}</li>
-        {% empty %}
-            <li>No games found.</li>
-        {% endfor %}
-    </ul>
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-lg-10">
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Matchup</th>
+                            <th>W/L</th>
+                            <th>Min</th>
+                            <th>FGM</th>
+                            <th>FGA</th>
+                            <th>FG%</th>
+                            <th>3FGM</th>
+                            <th>3FGA</th>
+                            <th>3FG%</th>
+                            <th>FTM</th>
+                            <th>FTA</th>
+                            <th>FT%</th>
+                            <th>OREB</th>
+                            <th>DREB</th>
+                            <th>REB</th>
+                            <th>AST</th>
+                            <th>STL</th>
+                            <th>BLK</th>
+                            <th>TOV</th>
+                            <th>PF</th>
+                            <th>PTS</th>
+                            <th>+/-</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for game in games.itertuples %}
+                        <tr>
+                            <td>{{ game.GAME_DATE}}</td>
+                            <td>{{ game.MATCHUP }}</td>
+                            <td>{{ game.WL }}</td>
+                            <td>{{ game.MIN }}</td>
+                            <td>{{ game.FGM }}</td>
+                            <td>{{ game.FGA }}</td> 
+                            <td>{{ game.FG_PCT }}%</td>
+                            <td>{{ game.FG3M }}</td>
+                            <td>{{ game.FG3A }}</td>
+                            <td>{{ game.FG3_PCT }}%</td>
+                            <td>{{ game.FTM }}</td>
+                            <td>{{ game.FTA }}</td>
+                            <td>{{ game.FT_PCT }}%</td>
+                            <td>{{ game.OREB }}</td>
+                            <td>{{ game.DREB }}</td>
+                            <td>{{ game.REB }}</td>
+                            <td>{{ game.AST }}</td>
+                            <td>{{ game.STL }}</td>
+                            <td>{{ game.BLK }}</td>
+                            <td>{{ game.TOV }}</td>
+                            <td>{{ game.PF}}</td>
+                            <td>{{ game.PTS }}</td>
+                            <td>{{ game.PLUS_MINUS }}</td>
+                        </tr>
+                        {% empty %}
+                        <tr>
+                            <td colspan="23">No games found.</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                {% if not display_all %}
+                <a href="?all=yes" class="btn btn-primary">See All</a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
 {% endblock %}
