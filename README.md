@@ -5,3 +5,6 @@ HoopsVista is a web application that allows users to explore and analyze NBA pla
 - View detailed statistics for individual players and teams.
 - Compare player and team statistics side by side.
 - Filter statistics by season, game type, and other criteria.
+# Contact
+Contact
+If you have any questions, feedback, or suggestions, please contact us at alexgonzo97@outlook.com or open an issue.
