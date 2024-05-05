@@ -1,5 +1,5 @@
 from nba_api.stats.static import players
-from nba_api.stats.endpoints import playergamelog, playercareerstats, playerestimatedmetrics
+from nba_api.stats.endpoints import playergamelog, playercareerstats, playerestimatedmetrics, commonplayerinfo
 import numpy as np
 
 def get_player_game_log(player_name):#get players game log for the season
@@ -27,3 +27,8 @@ def get_players_adv_metrics(player_name):
     data = playerestimatedmetrics.PlayerEstimatedMetrics(season='2023-24').get_data_frames()[0]
     player = get_player_id(player_name)
     return data.loc[data['PLAYER_ID'] == player]
+
+def get_name(player_name):
+    player = players.find_players_by_full_name(player_name)
+    return player[0]['full_name']
+
