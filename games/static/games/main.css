@@ -42,3 +42,7 @@ html, body {
   overflow: hidden; /* Hide overflow text */
   text-overflow: ellipsis; /* Display ellipsis (...) for overflow text */
 }
+
+.bold-text {
+  font-weight: bold;
+}

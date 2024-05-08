@@ -5,11 +5,16 @@ from .forms import PlayerForm
 def player_games(request, player_name): #grathers the players games from last season and full_name to display on top
     try:
         all_games = get_player_game_log(player_name)
-        name = get_name(player_name)
+        player_info = get_player_info(player_name)
+        player_full_name = player_info['full_name']
+        player_team_name = player_info['team_name']
+        player_team_city = player_info['team_city']
+        player_position = player_info['position']
+
     except Exception as e:
         # Handle error: log it and create an empty context or redirect
         all_games = []
-        name = None
+        player_full_name = None
 
     display_all = request.GET.get('all', 'no') == 'yes'  # Check if 'all' parameter is set to 'yes'
     if display_all:
@@ -18,9 +23,12 @@ def player_games(request, player_name): #grathers the players games from last se
         games = all_games[:5]  # Adjust this according to how your data is ordered
 
     context = {
-        'player_name': name,
+        'player_name': player_full_name,
         'games': games,
-        'display_all': display_all  # Pass whether all games are being displayed
+        'display_all': display_all,
+        'position':player_position,
+        'team_name':player_team_name,
+        'team_city': player_team_city  
     }
     return render(request, 'games/player_games.html', context)
 
@@ -34,14 +42,6 @@ def games(request):
     else:
         form = PlayerForm()
     return render(request, 'games/home.html', {'form':form})
-
-# def player_full_name(request,player_name):
-#     name = get_name(player_name)
-#     return render(request,'games/home.html', {'player_name': name})
-
-
-
-
 
 posts = [
     {

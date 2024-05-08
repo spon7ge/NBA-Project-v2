@@ -32,3 +32,17 @@ def get_name(player_name):
     player = players.find_players_by_full_name(player_name)
     return player[0]['full_name']
 
+def get_player_info(player_name):
+    player = players.find_players_by_full_name(player_name)
+    if player:
+        player_id = player[0]['id']
+        player_info = commonplayerinfo.CommonPlayerInfo(player_id=player_id).get_data_frames()[0]
+        if not player_info.empty:
+            player_information = {
+                'full_name': player_info.iloc[0]['DISPLAY_FIRST_LAST'],
+                'position': player_info.iloc[0]['POSITION'],
+                'team_city': player_info.iloc[0]['TEAM_CITY'],
+                'team_name': player_info.iloc[0]['TEAM_NAME']
+            }
+            return player_information
+    return None
