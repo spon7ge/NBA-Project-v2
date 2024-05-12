@@ -43,6 +43,16 @@ def games(request):
         form = PlayerForm()
     return render(request, 'games/home.html', {'form':form})
 
+def games(request):
+    if request.method == 'POST':
+        form = PlayerForm(request.POST)
+        if form.is_valid():
+            player_name = form.cleaned_data['player_name']
+            return redirect('player_games', player_name=player_name)
+    else:
+        form = PlayerForm()
+    return render(request, 'games/home.html', {'form':form})
+
 posts = [
     {
         'author': 'Alex Gonzalez - ESPN',

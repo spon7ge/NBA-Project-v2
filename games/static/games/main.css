@@ -8,11 +8,15 @@ html, body {
 .table {
   width: 100%; /* Ensure the table takes up the full width of its container */
   font-size: 12px; /* Adjust the font size of table content */
+  min-width: 1600px;
 }
 
 .table th,
 .table td {
-  padding: 0.5rem; /* Adjust the padding around table cells */
+  padding: 0.3rem; /* Adjust the padding around table cells */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 /* Optional: Adjust the width of specific columns */
@@ -28,6 +32,8 @@ html, body {
 /* Optional: Remove padding around table */
 .table-responsive {
   padding: 0;
+  width: 100%;
+  overflow-x: auto;
 }
 
 .table tbody tr,
